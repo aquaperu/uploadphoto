@@ -1,0 +1,15 @@
+@if(lightboxFile){
+    <preview-lightbox [fileInputSignal]="lightboxFile" (previewCloseOutputSignal)="closeLightbox()" ></preview-lightbox>
+}
+<app-file-preview-item
+    *ngFor="let file of previewFiles()"
+    [fileItem]="file"
+    (removeFile)="removeFile.emit($event)"
+    (uploadSuccess)="uploadSuccess.emit($event)"
+    (uploadFail)="uploadFail.emit($event)"
+    (imageClicked)="openLightbox($event)"
+    [itemTemplate]="itemTemplate()"
+    [adapter]="adapter()"
+    [captions]="captions()"
+    [enableAutoUpload]="enableAutoUpload()"
+></app-file-preview-item>

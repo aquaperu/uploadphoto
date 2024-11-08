@@ -1,0 +1,44 @@
+<div
+  (click)="fileInput.click()"
+  class="file-drop-wrapper"
+  *ngIf="showeDragDropZone"
+>
+  <app-filedrop
+    (onFileDrop)="dropped($event)"
+    [customstyle]="'custom-drag'"
+    [captions]="captions"
+  >
+    <ng-content select=".dropzoneTemplate"> </ng-content>
+  </app-filedrop>
+</div>
+
+<input
+  type="file"
+  name="file[]"
+  id="fileInput"
+  #fileInput
+  [multiple]="uploadType === 'multi' ? 'multiple' : ''"
+  [attr.capture]="fileInputCapture"
+  (click)="fileInput.value = ''"
+  (change)="onChange(fileInput.files)"
+  [accept]="accept"
+  class="file-input"
+/>
+
+<div
+  class="files-preview-wrapper"
+  [ngClass]="{ 'visually-hidden': !showPreviewContainer }"
+>
+  <app-file-preview-container
+    *ngIf="files"
+    [previewFiles]="files"
+    (removeFile)="removeFile($event)"
+    (uploadSuccess)="onUploadSuccess($event)"
+    (uploadFail)="onUploadFail($event)"
+    [adapter]="adapter"
+    [itemTemplate]="itemTemplate"
+    [captions]="captions"
+    [enableAutoUpload]="enableAutoUpload"
+  >
+  </app-file-preview-container>
+</div>
