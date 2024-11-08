@@ -11,7 +11,7 @@ export class DemoFilePickerAdapter extends FilePickerAdapter {
   public uploadFile(fileItem: FilePreviewModelType): Observable<IUploadResponse | undefined> {
     const form = new FormData();
     form.append('file', fileItem!.file);
-   const api = 'https://ngx-awesome-uploader-2.free.beeceptor.com/upload';
+   const api = 'https://sadbackendgoogledrive.onrender.com/obra/crea';
     const req = new HttpRequest('POST', api, form, {reportProgress: true});
     return this.http.request(req)
     .pipe(
