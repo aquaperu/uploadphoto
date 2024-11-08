@@ -23,7 +23,7 @@ export interface ITableColumn<TConfig> {
 @Component({
   selector: 'ui-table',
   standalone: true,
-  imports: [CommonModule, MatTableModule,UiDialogComponent,DialogoutletComponent],
+  imports: [CommonModule, MatTableModule,DialogoutletComponent],
   templateUrl: './ui-table.component.html',
   styleUrl: './ui-table.component.css',
   changeDetection:ChangeDetectionStrategy.OnPush//necesario para no generar error al momento de cambiar de columnas

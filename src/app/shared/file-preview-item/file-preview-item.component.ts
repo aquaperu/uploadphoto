@@ -27,9 +27,9 @@ export class FilePreviewItemComponent implements OnInit {
   @Output() public readonly imageClicked = new EventEmitter<FilePreviewModelType>();
   @Input() public fileItem: FilePreviewModelType;
   @Input() adapter: FilePickerAdapter;
-  @Input() itemTemplate: TemplateRef<any>;
+  itemTemplate = input.required<TemplateRef<any>>();
   @Input() captions: UploaderCaptions;
-  @Input() enableAutoUpload: boolean;
+  enableAutoUpload = input.required<boolean>();
   public uploadProgress: number;
   public isImageFile: boolean;
   public fileType: string;

@@ -7,7 +7,7 @@
       </div>
       <div class="other-preview-thumbnail"
         *ngIf="!isImageFile || !fileItem?.file"
-        [ngClass]="fileItem?.fileName?.split('.')?.pop()"
+        [ngClass]="fileItem.fileName.split('.').pop()"
         >
         {{fileType}}
       </div>
@@ -16,8 +16,8 @@
       </div>
     </div>
     <div class="file-preview-description" >
-      <a class="file-preview-title" [title]="fileItem?.fileName" href="javascript:void(0)"><p>{{fileItem?.fileName}}</p></a>
-      <div class="file-preview-size" *ngIf="fileItem?.file">{{niceBytes(fileItem?.file?.size)}}</div>
+      <a class="file-preview-title" [title]="fileItem.fileName" href="javascript:void(0)"><p>{{fileItem.fileName}}</p></a>
+      <div class="file-preview-size" *ngIf="fileItem?.file">{{niceBytes(fileItem.file.size)}}</div>
     </div>
     <div class="file-preview-actions" >
         <div class="ngx-checkmark-wrapper" *ngIf="!uploadError && !uploadProgress && fileItem?.file">
@@ -26,13 +26,13 @@
         <app-refresh-icon *ngIf="uploadError" (click)="onRetry()"></app-refresh-icon>
         <a class="ngx-close-icon-wrapper"
         (click)="onRemove(fileItem)"
-         title="{{captions?.previewCard?.remove}}"
+         title="{{captions.previewCard.remove}}"
          >
           <close-icon class="ngx-close-icon"></close-icon>
         </a>
     </div>
       <a class="file-upload-error-wrapper" *ngIf="uploadError && !uploadProgress" href="javascipt:void(0)"
-      title="{{captions?.previewCard?.uploadError}}">
+      title="{{captions.previewCard.uploadError}}">
       </a>
 
     <ng-container *ngIf="uploadProgress">
@@ -48,4 +48,4 @@
 
   </div>
 
-  <ng-container [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{fileItem: fileItem, uploadProgress: uploadProgress}"> </ng-container>
+  <ng-container [ngTemplateOutlet]="itemTemplate()" [ngTemplateOutletContext]="{fileItem: fileItem, uploadProgress: uploadProgress}"> </ng-container>

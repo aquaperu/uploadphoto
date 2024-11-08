@@ -20,14 +20,14 @@ export class FilePreviewContainerComponent {
   public lightboxFile: FilePreviewModelType;
   previewFiles = input<FilePreviewModelType[]>();
   
-  itemTemplate = input.required<TemplateRef<any> | null>();
-  enableAutoUpload = input<boolean>();
+  itemTemplate = input.required<TemplateRef<any>>();
+  enableAutoUpload = input.required<boolean>();
   public readonly removeFile = output <FilePreviewModelType>();
   public readonly uploadSuccess = output <FilePreviewModelType>();
   public readonly uploadFail = output <HttpErrorResponse>();
   
   adapter = input.required<FilePickerAdapter>(); 
-  captions = input<UploaderCaptions>();
+  captions = input.required<UploaderCaptions>();
   
   public openLightbox(file: FilePreviewModelType): void {
     this.lightboxFile = file;
